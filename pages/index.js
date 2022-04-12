@@ -1,21 +1,26 @@
 import {PageTitle} from "./../components/PageTitle"
+import {Button} from '../components/Button'
+import {useState,React} from 'react'
 
-function ProductCard ({name,key,...props})
-{
-  return <li>{name} <span>{key}</span></li>
-}
+
 
 export default function Home() {
-  const productData = [1,2,3,4,5,6]
+  const [isLoading, setisLoading] = useState(false);
+  console.log(isLoading)
 
   
   return (
     <>
-    
     <PageTitle title="storefront" tagline ="featured products"/> 
-    {
-      productData.map(product => <ProductCard key={product} name={product}/>)
-    }
+    <div style={{textAlign:'center'}}>
+      {/* !isloading is toggling back and forth */}
+      <Button onClick={()=>setisLoading(!isLoading)}
+      >Get Some Data</Button>
+      {
+      
+        isLoading || <p>Output</p>
+      }
+    </div>
     </>
   )
 }
