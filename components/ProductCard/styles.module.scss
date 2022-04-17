@@ -1,0 +1,23 @@
+ .productCard{
+  width:fit-content;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: whitesmoke;
+  border-radius:1rem;
+
+  
+   h2{
+     font-weight: bold;
+      border-bottom: 1px solid black; 
+   }
+  p {
+  padding-top: 0.5rem;
+  }
+
+  form {
+    margin-right: 15rem;
+    margin-top: 1rem;
+  }
+   
+ }
+

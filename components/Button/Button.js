@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Styles from './styles.module.css'
+import {button} from './styles.module.scss'
 
 function Button ({children, label, ...props})  {
   return (
-        <div className={Styles.button}>
+        <div className={button}>
            {label}
            {children}
 
