@@ -1,22 +1,20 @@
 import {PageTitle} from "./../components/PageTitle"
-import {Button} from '../components/Button'
 import {useState,React,useEffect} from 'react'
-import {User} from '../components/User'
 import {ProductCard} from '../components/ProductCard'
+import {loadStripe} from "@stripe/stripe-js"
 
 // api https://storefront-4a3db-default-rtdb.firebaseio.com/
 
 export default function Home(props) {
-  console.log(props)
   const products = props.products
-  const [isLoading, setisLoading] = useState(false);
-  const [userData, setUserData] = useState([])
- 
+
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+
   useEffect(()=>{
     async function loadExternalDataTheCRAWay(){
      const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
      const data = await res.json()
-     setUserData(data)
+     //setUserData(data)
     }
 
     loadExternalDataTheCRAWay()
@@ -40,10 +38,11 @@ export async function getStaticProps() {
   // awaiting recieving that data
   const productData = await res.json()
   const products = Object.values(productData)
-  console.log(productData)
   return {
     props:{
       products
-    }
+    },
+    // checks the data every 60 seconds
+    revalidate:60
   }
 }
