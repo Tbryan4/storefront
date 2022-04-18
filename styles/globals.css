@@ -333,7 +333,7 @@ table {
 }
 table td,
 table th {
-  padding: 0;
+  padding: 1;
   text-align: left;
 }
 
